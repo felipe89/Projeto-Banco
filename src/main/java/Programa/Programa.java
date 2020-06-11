@@ -17,7 +17,5 @@ public class Programa {
 
     private static void realizaTransferencia(String contaOrigem, String contaDestino, BigDecimal valor) {
 
-
-
     }
 }
