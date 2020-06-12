@@ -1,17 +1,29 @@
 package Entidade;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Transferencia {
 
     private String contaOrigem = "";
     private String contaDestino = "";
     private BigDecimal valor = BigDecimal.ZERO;
+    private LocalDate data;
 
-    public Transferencia(String contaOrigem, String contaDestino, BigDecimal valor) {
+    public Transferencia(String contaOrigem, String contaDestino, BigDecimal valor, LocalDate data) {
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
         this.valor = valor;
+        this. data = data;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public String getContaOrigem() {
