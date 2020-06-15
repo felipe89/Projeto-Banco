@@ -1,7 +1,9 @@
 package Entidade;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class CalculaTaxasImpl implements CalculaTaxas {
 
@@ -15,13 +17,25 @@ public class CalculaTaxasImpl implements CalculaTaxas {
 
             valorTotalTaxa = porcentagem.divide(new BigDecimal(100)).multiply(valor).add(valorTaxa);
 
-        }else if (taxa.descricao.equals("B")){
+        } else if (taxa.descricao.equals("B")) {
             BigDecimal valorDentroPeriodo = new BigDecimal(10.0);
             BigDecimal valorForaPeriodo = new BigDecimal(8.00);
             LocalDate dataCadastro = LocalDate.of(2020, 06, 1);
 
-        }
 
+            long dias = ChronoUnit.DAYS.between(date, dataCadastro);
+            if (dias <= 30) {
+                valorTotalTaxa = new BigDecimal(10.0);
+
+            } else {
+                valorTotalTaxa = new BigDecimal(8.00);
+
+            }
+
+        }
         return valorTotalTaxa;
     }
 }
+
+
+
