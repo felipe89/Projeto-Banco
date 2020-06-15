@@ -20,14 +20,19 @@ public class Programa {
     private static void realizaTransferencia() {
 
         Transferencia transferencia = new Transferencia("Conta Felipe", "Conta Nelson", new BigDecimal(1000), LocalDate.now());
-        Transferencia transferencia1 = new Transferencia("Conta Felipe", "Conta Nelson", new BigDecimal(1000), LocalDate.now());
+        Transferencia transferencia1 = new Transferencia("Conta Felipe", "Conta Nelson", new BigDecimal(1000), LocalDate.of(2020, 06, 1));
+        Transferencia transferencia2 = new Transferencia("Conta Felipe", "Conta Nelson", new BigDecimal(1000), LocalDate.of(2020, 06, 22));
+
 
         CalculaTaxasImpl calculaTaxas = new CalculaTaxasImpl();
         BigDecimal valorTotalTaxaA = calculaTaxas.caculaTaxa(Taxas.TAXA_A,transferencia.getValor(), transferencia.getData());
         BigDecimal valorTotalTaxaB = calculaTaxas.caculaTaxa(Taxas.TAXA_B,transferencia1.getValor(), transferencia1.getData());
+        BigDecimal valorTotalTaxaC = calculaTaxas.caculaTaxa(Taxas.TAXA_C,transferencia2.getValor(), transferencia2.getData());
 
-        System.out.println(transferencia.getContaOrigem() + " " + " " + transferencia.getContaDestino() + " " + " " + transferencia.getValor() + " " + " " + "Valor total de taxas " + valorTotalTaxaA);
-        System.out.println(transferencia1.getContaOrigem() + " " + " " + transferencia1.getContaDestino() + " " + " " + transferencia1.getValor() + " " + " " + "Valor total de taxas " + valorTotalTaxaB);
+
+        System.out.println(transferencia.getContaOrigem() + " " + " " + transferencia.getContaDestino() + " " + " " + transferencia.getValor() + " " + " " + "Valor total de taxas " + valorTotalTaxaA.floatValue());
+        System.out.println(transferencia1.getContaOrigem() + " " + " " + transferencia1.getContaDestino() + " " + " " + transferencia1.getValor() + " " + " " + "Valor total de taxas " + valorTotalTaxaB.floatValue());
+        System.out.println(transferencia2.getContaOrigem() + " " + " " + transferencia2.getContaDestino() + " " + " " + transferencia2.getValor() + " " + " " + "Valor total de taxas " + valorTotalTaxaC.floatValue());
 
     }
 }
